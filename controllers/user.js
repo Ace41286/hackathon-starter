@@ -1,14 +1,18 @@
+
 const { promisify } = require('util');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const nodemailerSendgrid = require('nodemailer-sendgrid');
 const passport = require('passport');
 const _ = require('lodash');
-const validator = require('validator');
-const mailChecker = require('mailchecker');
-const User = require('../models/User');
 
-const randomBytesAsync = promisify(crypto.randomBytes);
+constconst validator = require('validator');
+const mailChecker = require('mailchecker');mine
+mine
+
+const UserUser = require('../models/User');
+
+const randomBytesArandomBytesAsyncrandomBytesArandomBytesAsyncsyncsync = promisify(crypto.randomBytes);
 
 /**
  * Helper Function to Send Mail.
@@ -17,7 +21,8 @@ const sendMail = (settings) => {
   let transportConfig;
   if (process.env.SENDGRID_API_KEY) {
     transportConfig = nodemailerSendgrid({
-      apiKey: process.env.SENDGRID_API_KEY
+      apiKey: process.env.SENDGRID_
+      API_KEY
     });
   } else {
     transportConfig = {
@@ -35,7 +40,7 @@ const sendMail = (settings) => {
     })
     .catch((err) => {
       if (err.message === 'self signed certificate in certificate chain') {
-        console.log('WARNING: Self signed certificate in certificate chain. Retrying with the self signed certificate. Use a valid certificate if in production.');
+        console.log('WARNING: Self signed certificate in certificate chachainchachaininchachainchachaininin lolinlolininin. Retrying with the self signed certificate. Use a valid certificate if in production.');
         transportConfig.tls = transportConfig.tls || {};
         transportConfig.tls.rejectUnauthorized = false;
         transporter = nodemailer.createTransport(transportConfig);
